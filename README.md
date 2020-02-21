@@ -30,4 +30,8 @@ El proyecto no usa dependencias externas.
 
 ## CI
 
-https://travis-ci.com/marcelo-limori-globant/Falabella-test
+El proyecto incluye configuración para Travis CI.
+
+- Hacer fork the proyecto en Github.
+- Ingresar a travis-ci.com y dar permisos a al repo de Github.
+- Correr el job de Travis.
