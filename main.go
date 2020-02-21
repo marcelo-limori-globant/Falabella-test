@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// Field types. Used for both validation of a type identifier, and field value itself.
 var fieldTypeValidators = map[string]string{
 	"A": "^[0-9A-Z]+$",
 	"N": "^[0-9]+$",
@@ -24,6 +25,7 @@ func getFieldType(data []byte, cursor int) (string, error) {
 	return result, nil
 }
 
+// Get a number on the range 01..99
 func getPositiveNumber(data []byte, cursor int) (int, error) {
 	if cursor >= len(data)-1 {
 		return 0, errors.New("Index out of range.")
@@ -44,6 +46,7 @@ func getFieldNumber(data []byte, cursor int) (string, error) {
 	return fmt.Sprintf("%02d", nmbr), err
 }
 
+// Validate a field value based on expected type and its regex.
 func checkFieldValue(value string, expectedType string) error {
 	if result, err := regexp.MatchString(fieldTypeValidators[expectedType], value); err != nil || !result {
 		return errors.New(fmt.Sprintf("Invalid field value %s.", value))
@@ -69,6 +72,7 @@ func decodeTLV(data []byte) (map[string]string, error) {
 		return result, errors.New("Data length is 0.")
 	}
 
+	// Ugly, but simplifies flow with the "value, err :=" pattern.
 	cursor := 0
 	var fieldType string
 	var fieldNumber string
