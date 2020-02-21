@@ -16,12 +16,18 @@ Ejemplo:
 
 ## Compilación
 
-- go build -o Falabella; ./Falabella
+`go build -o Falabella; ./Falabella`
 
 El proyecto no usa dependencias externas.
 
 ## Tests
 
-- go get github.com/stretchr/testify dado que Testify es una dependencia externa.
-- go test -coverprofile=coverage.out
-- go tool cover -html=coverage.out para consultar los resultados de coverange
+`go get github.com/stretchr/testify` dado que Testify es una dependencia externa.
+
+`go test -coverprofile=coverage.out`
+
+`go tool cover -html=coverage.out` para consultar los resultados de coverange
+
+## CI
+
+https://travis-ci.com/marcelo-limori-globant/Falabella-test
