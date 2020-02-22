@@ -85,22 +85,22 @@ func decodeTLV(data []byte) (map[string]string, error) {
 		if fieldType, err = getFieldType(data, cursor); err != nil {
 			return result, err
 		}
-		cursor = cursor + 1
+		cursor += 1
 
 		if fieldNumber, err = getFieldNumber(data, cursor); err != nil {
 			return result, err
 		}
-		cursor = cursor + 2
+		cursor += 2
 
 		if fieldLength, err = getPositiveNumber(data, cursor); err != nil {
 			return result, err
 		}
-		cursor = cursor + 2
+		cursor += 2
 
 		if fieldValue, err = getFieldValue(data, fieldType, fieldLength, cursor); err != nil {
 			return result, err
 		}
-		cursor = cursor + fieldLength
+		cursor += fieldLength
 
 		result[fieldNumber] = fieldValue
 	}
